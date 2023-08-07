@@ -1,4 +1,10 @@
 let url = 'https://random-words5.p.rapidapi.com/getRandom';
+let rules = [
+  {"Min":2},
+  {"Min": 4, "Max#Vowels": 3, "max#Cons":3},
+  {"Min": 6, "Max#Vowels": 4, "max#Cons":4},
+]
+let curr_rules
 const options = {
 	method: 'GET',
 	headers: {
@@ -55,6 +61,23 @@ window.addEventListener('keydown', (event) => {
   }
 
 })
+
+function get_play_mode(button_id){
+  switch(button_id){
+    case "easy_button":
+      curr_rules = rules[0]
+      break;
+    case "med_button":
+      curr_rules = rules[1]
+      break;
+    case "hard_button":
+      curr_rules = rules[2]
+      break;
+  }
+  document.getElementById("title").innerHTML = curr_rules
+}
+
+document.getElementById('easy_button').onclick() = get_play_mode('easy_button')
 
 // async function getDict(){
 
